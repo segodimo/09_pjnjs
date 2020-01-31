@@ -33,3 +33,106 @@ git diff index.html
 
 PUSH =>
 PULL <=
+
+
+https://www.guru99.com/mariadb-tutorial-install.html
+
+
+show databases;
+
+use database;
+
+show tables;
+
+desc tbl0901;
+
+
+DROP TABLE tablename;
+DROP TABLE tbl0901;
+
+CREATE TABLE persons (
+id int, 
+name varchar(20), 
+surname varchar(20)
+);
+
+INSERT INTO persons VALUES (1,"poftut","com");
+
+
+
+CREATE TABLE Book(
+id INT NOT NULL AUTO_INCREMENT,
+name VARCHAR(100) NOT NULL,
+PRIMARY KEY (id)
+);
+
+
+CREATE TABLE Price(
+id INT NOT NULL AUTO_INCREMENT,
+price float NOT NULL,
+PRIMARY KEY (id));
+
+
+
+CREATE TABLE IF NOT EXISTS equipment (
+equip_id int(5) NOT NULL AUTO_INCREMENT,
+type varchar(50) DEFAULT NULL,
+install_date DATETIME DEFAULT NULL,
+color varchar(20) DEFAULT NULL,
+working bool DEFAULT NULL,
+location varchar(250) DEFAULT NULL,
+PRIMARY KEY(equip_id)
+);
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE tbl0901(
+id INT NOT NULL AUTO_INCREMENT,
+url TEXT NOT NULL,
+titulo varchar(250) DEFAULT NULL,
+data DATETIME DEFAULT NULL,
+tags varchar(250) DEFAULT NULL,
+PRIMARY KEY (id)
+);
+
+
+
+
+INSERT INTO tbl0901
+(url, titulo, data, tags)  
+VALUES(
+'www.test.com', 'titest', '2004-05-23T14:25:10', 'tstags');  
+
+
+INSERT INTO tbl0901
+(url, titulo, tags)  
+VALUES('www.test.com', 'titest', 'tstags');  
+
+
+
+ALTER tbl0901 MODIFY data DATETIME DEFAULT CURRENT_TIMESTAMP;
+
+ALTER TABLE
+ MODIFY dt_modified datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+
+
+
+
+
+
+CREATE TABLE Book(  
+id INT NOT NULL AUTO_INCREMENT,  
+name VARCHAR(100) NOT NULL,  
+PRIMARY KEY (id));
+
+
+INSERT INTO book
+(id, name)
+VALUES(1, 'MariaDB Book');

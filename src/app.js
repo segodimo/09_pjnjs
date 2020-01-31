@@ -3,62 +3,31 @@ const app = express();
 
 
 // *******************************************************************************
-// var sqlite3 = require('sqlite3').verbose();
-// var db = new sqlite3.Database(':memory:');
+const mariadb = require('mariadb');
+const pool = mariadb.createPool({
+	host: 'http://localhost:3306', 
+     user:'root', 
+     password: '105474',
+     connectionLimit: 5
+});
+async function asyncFunction() {
+  let conn;
+  try {
+	conn = await pool.getConnection();
+	const rows = await conn.query("SELECT 1 as val");
+	console.log(rows); //[ {val: 1}, meta: ... ]
+	const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
+	console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
 
-// db.serialize(function () {
+  } catch (err) {
+	throw err;
+  } finally {
+	if (conn) return conn.end();
+  }
+}
 
-//     db.run('CREATE TABLE lorem (info TEXT)');
-//     var stmt = db.prepare('INSERT INTO lorem VALUES (?)');
-
-//     for (var i = 0; i < 10; i++) {
-//         stmt.run('Ipsum ' + i);
-//     }
-
-//     stmt.finalize();
-
-//     db.each('SELECT rowid AS id, info FROM lorem', function (err, row) {
-//         console.log(row.id + ': ' + row.info);
-//     });
-// });
-
-// db.close();
 // *******************************************************************************
-const sqlite3 = require('sqlite3')
 
-const insertData = () => {
-    console.log("Insert data")
-    db.run('INSERT INTO contacts (name) VALUES (?)', ["contact 001"]);
-}
-
-const createTable = () => {
-    console.log("create database table contacts");
-    db.run("CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT)", insertData);
-}
-
-let db = new sqlite3.Database("./mydb.sqlite3", (err) => {
-    if (err) {
-        console.log('Error when creating the database', err)
-    } else {
-        console.log('Database created!')
-        /* Put code to create table(s) here */
-        createTable()
-    }
-})
-
-const read = () => {
-    console.log("Read data from contacts");
-    db.all("SELECT rowid AS id, name FROM contacts", function (err, rows) {
-        rows.forEach(function (row) {
-            console.log(row.id + ": " + row.name);
-        });
-    });
-}
-
-read();
-
-db.close();
-// *******************************************************************************
 
 
 //middlewares
