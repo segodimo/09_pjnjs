@@ -11,12 +11,42 @@ http://192.168.1.104:3000/api
 <!-- TERMUX -->
 ~/.termux/termux.properties
 
-extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']] 
 
-extra-keys = [ \
- ['ESC','|','/','HOME','UP','END','PGUP','DEL'], \
- ['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP'] \
+extra-keys = [['ESC',':','-','[','{','$','""','UP',"''",'ALT'],['ENTER','TAB','_',']','}','#','LEFT','DOWN','RIGHT','CTRL']]
+
+extra-keys = [['ESC',':','-','[','{','$','""','UP',"''",'ALT'],['ENTER','TAB','_',']','}','#','LEFT','DOWN','RIGHT','CTRL']]
+
+extra-keys = [['ESC','/','-','HOME','UP','END','PGUP'],
+['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN']] 
+
+extra-keys = [
+['ESC','|','/','HOME','UP','END','PGUP','DEL'],
+['TAB','CTRL','ALT','LEFT','DOWN','RIGHT','PGDN','BKSP'],
+['ENTER','|','/','HOME','UP','END','PGUP','DEL']
 ] 
+
+
+CTRL ("special key")
+ALT ("special key")
+FN ("special key")
+ESC ("special key")
+TAB
+HOME
+END
+PGUP
+PGDN
+INS
+DEL
+BKSP
+UP
+LEFT
+RIGHT
+DOWN
+ENTER
+BACKSLASH
+QUOTE
+APOSTROPHE
+
 /*++++++++++++++++++++++++*/
 sudo npm init -y
 

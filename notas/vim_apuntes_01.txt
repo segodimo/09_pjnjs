@@ -59,7 +59,7 @@ qall cerrar tudo
 
 Para alterar duas janelas divididas verticalmente para dividir no horizonte
 
-Ctrl- w t Ctrl-w K
+Ctrl-w t Ctrl-w K
 
 Horizontalmente para verticalmente:
 
