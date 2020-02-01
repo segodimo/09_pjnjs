@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const mariadb = require('mariadb');
 
 
 // *******************************************************************************
@@ -52,14 +53,28 @@ const bodyParser = require('body-parser');
 // *******************************************************************************
 // TEST 2
 
-const mariadb = require('mariadb/callback');
-const conn = mariadb.createConnection({ host: 'localhost', user: 'root', password: '105474' });
-conn.query("SELECT * FROM tbl0901", (err, rows) => {
-  console.log(rows);
-});
+//const mariadb = require('mariadb/callback');
+//const conn = mariadb.createConnection({ host: 'localhost', user: 'root', password: '105474' });
+//conn.query("SELECT * FROM tbl0901", (err, rows) => {
+//  console.log(rows);
+//});
 // *******************************************************************************
 
-
+mariadb.createConnection({
+    host: 'localhost', 
+    user: 'root',
+    password: '105474', 
+    database: 'tbl0901' 
+})
+.then(_ => {
+    consol.log('La coneccion a la base de datos fue satisfactoria.')
+    app.listen(3000, function() {
+        console.log('El sitio de APIs inició correctamente en el puerto 3000.');
+    });
+})
+.catch(err => {
+    console.log('Ocurrió un error intentando abrir la coneccion a la base de datos.', err);
+});
 
 // *******************************************************************************
 //middlewares
@@ -68,7 +83,7 @@ app.use(express.json());
 
 
 //routes
-app.get('/users', (req, res) => res.send('USERS USERS'));
+app.get('/', (req, res) => res.send('USERS USERS'));
 app.get('/routes', (req, res) => res.send('USERS ROUTES'));
 
 module.exports = app;
