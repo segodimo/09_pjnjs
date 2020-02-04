@@ -35,15 +35,26 @@ PUSH =>
 PULL <=
 
 
+sudo /etc/init.d/mysql start
+sudo /etc/init.d/mysql stop
 
 
+CREATE DATABASE `tbl0901`;
+
+CREATE USER 'segodimo' IDENTIFIED BY '105474';
+
+GRANT USAGE ON *.* TO 'segodimo'@localhost IDENTIFIED BY '105474';
+
+GRANT USAGE ON *.* TO 'segodimo'@'%' IDENTIFIED BY '105474';
 
 
+GRANT ALL privileges ON `tbl0901`.* TO 'segodimo'@localhost;
+FLUSH PRIVILEGES;
 
+SHOW GRANTS FOR 'segodimo'@localhost; 
 
-
-
-
+DROP USER segodimo@localhost;
+DROP DATABASE tbl0901;
 
 
 
@@ -202,7 +213,8 @@ VALUES(
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 <!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-
+sudo /etc/init.d/mysql start
+sudo /etc/init.d/mysql stop
 
 
 
