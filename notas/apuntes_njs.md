@@ -25,6 +25,29 @@ extra-keys = [
 ['ENTER','|','/','HOME','UP','END','PGUP','DEL']
 ] 
 
+//
+
+extra-keys = [['ESC',':','-','()','{}','$','""','UP',"''",'ALT'],['ENTER','TAB','_',';','[]','#','LEFT','DOWN','RIGHT','CTRL']]
+
+
+# Open a new terminal with ctrl + t (volume down + t)
+shortcut.create-session = ctrl + t
+
+# Go one session down with (for example) ctrl + 2
+shortcut.next-session = ctrl + l
+
+# Go one session up with (for example) ctrl + 1
+shortcut.previous-session = ctrl + h
+
+# Rename a session with (for example) ctrl + n
+shortcut.rename-session = ctrl + n
+
+# Ignore bell character.
+bell-character=ignore
+
+//
+
+
 
 CTRL ("special key")
 ALT ("special key")
